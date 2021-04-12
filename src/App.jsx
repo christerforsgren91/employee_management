@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <div>
         <h1 data-cy='header'>Employee List</h1>
-        <EmployeeList />
+        <EmployeeList/>
       </div>
     )
   }
