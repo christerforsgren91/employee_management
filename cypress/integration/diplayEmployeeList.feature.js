@@ -15,4 +15,13 @@ describe('Display list of employees', () => {
         .should('contain', 'George Bluth')
     })
   })
+
+  it('renders an image next to employee name', () => {
+    cy.get('[data-cy=employee-list]').within(() => {
+      cy.get('[data-cy=employee-item]')
+        .first()
+        .find('[data-cy=avatar]')
+        .should('be.visible')
+    })
+  })
 })
