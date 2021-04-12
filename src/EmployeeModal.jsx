@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import { Modal, Image, Header, Button } from 'semantic-ui-react'
+import axios from 'axios'
 
 class EmployeeModal extends Component {
   state= {
     open: false,
     employee: {}
+  }
+
+  getEmployee = async () => {
+    let employeeData = await axios.get(`https://reqres.in/api/users/${this.props.id}`)    
+    this.setState({ employee: employeeData.data.data })
   }
 
   render() {
@@ -13,7 +19,7 @@ class EmployeeModal extends Component {
       onClose={() => this.setState({ open: false})}
       onOpen={() => this.setState({ open: true})}
       open={this.state.open}
-      trigger={<Button size='small' positive data-cy='view-button'>View</Button>}
+      trigger={<Button onClick={() => { this.getEmployee() }} size='small' positive data-cy='view-button'>View</Button>}
       >
         <Modal.Content image data-cy='modal-container'>
           <Image data-cy='image' size='small' src={this.state.employee.avatar} wrapped />
