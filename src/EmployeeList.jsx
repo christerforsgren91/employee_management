@@ -5,7 +5,8 @@ import EmployeeModal from './EmployeeModal.jsx'
 
 class EmployeeList extends Component {
   state = {
-    employees: []
+    employees: [],
+    page: 0
   }
 
   componentDidMount() {
@@ -13,10 +14,10 @@ class EmployeeList extends Component {
   }
 
   getEmployees = async () => {
-    let employeeData = await axios.get('https://reqres.in/api/users')
+    let employeeData = await axios.get('https://reqres.in/api/users?per_page=4&page=3')
     // if you want to see employees 7 -12 put ?page=2 after users in URL
     // if you want to fetch 10 employees put ?per_page=10 after users in URL
-    this.setState({ employees: employeeData.data.data })
+    this.setState({ employees: employeeData.data.data, page: employeeData.data.page })
   }
   
   render() {
@@ -37,7 +38,7 @@ class EmployeeList extends Component {
       )
     )
   return (
-    <Item.Group data-cy='employee-list'>
+    <Item.Group data-cy='employee-list' data-page={this.state.page}>
       {employeeList}
     </Item.Group>
   )

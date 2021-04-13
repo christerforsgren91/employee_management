@@ -12,7 +12,7 @@ describe('Display list of employees', () => {
       cy.get('[data-cy=employee-item]')
         .first()
         .find('[data-cy=name]')
-        .should('contain', 'George Bluth')
+        .should('contain', 'Tobias Funke')
     })
   })
 
@@ -24,4 +24,14 @@ describe('Display list of employees', () => {
         .should('be.visible')
     })
   })
+
+  it('check number of people', () => {
+    cy.get('[data-cy=employee-item]').should('have.length', 4)
+  });
+
+  it('check page', () => {
+    cy.get('[data-cy=employee-list]')
+    .invoke('attr', 'data-page')
+    .should('equal', '3')
+  });
 })
