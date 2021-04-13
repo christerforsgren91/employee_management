@@ -1,6 +1,7 @@
 describe('Display list of employees', () => {
   before(() => {
     cy.visit('/')
+    cy.get('[data-cy=employees-tab]').click()
   })
 
   it('display a header', () => {

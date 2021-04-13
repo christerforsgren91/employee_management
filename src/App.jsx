@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
-import EmployeeList from './EmployeeList'
-import CharacterList from './CharacterList'
-import { Container, Header } from 'semantic-ui-react'
+import { Route, Switch } from "react-router";
+import Header from "./Header.jsx"
+import Employees from "./Employees.jsx"
+import Characters from "./Characters.jsx"
 
 class App extends Component {
   render() {
     return (
-      <Container>
-        <Header size='huge' data-cy='header'>Employee List</Header>
-        <EmployeeList/>
-        <Header size='huge' data-cy='character-header'>Character List</Header>
-        <CharacterList/>
-      </Container>
+      <>
+      <Header/>      
+      <Switch>        
+        <Route exact path="/Employees" component={Employees}></Route>
+        <Route exact path="/Characters" component={Characters}></Route>        
+      </Switch>
+      </>
     )
   }
 }

@@ -1,6 +1,7 @@
 describe('Display of employee modal', () => {
   beforeEach(() => {
     cy.visit('/')
+    cy.get('[data-cy=employees-tab]').click()
     cy.get('[data-cy=employee-list]').within(() => {
       cy.get('[data-cy=employee-item]')
       .first()

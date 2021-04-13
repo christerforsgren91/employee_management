@@ -1,7 +1,7 @@
 describe('List of Caracters', () => {
   beforeEach(() => {
     cy.visit('/')
-    /*cy.get('[data-cy=star-wars-tab]').click()*/
+    cy.get('[data-cy=characters-tab]').click()
   })
 
   it('display a header', () => {
