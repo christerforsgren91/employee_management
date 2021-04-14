@@ -8,15 +8,14 @@ class App extends Component {
   render() {
     return (
       <>
-      <Header/>      
-      <Switch>        
-        <Route exact path="/Employees" component={Employees}></Route>
-        <Route exact path="/Characters" component={Characters}></Route>        
-      </Switch>
+        <Header/>      
+        <Switch>        
+          <Route exact path="/Employees" component={Employees}></Route>
+          <Route exact path="/Characters" component={Characters}></Route>        
+        </Switch>
       </>
     )
   }
 }
-
 
 export default App;
