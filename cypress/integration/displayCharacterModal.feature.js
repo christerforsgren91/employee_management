@@ -3,7 +3,9 @@ describe('Display of character modal', () => {
     cy.visit('/')
     cy.get('[data-cy=characters-tab]').click()
     cy.get('[data-cy=character-list]').within(() => {
-      cy.get('[data-cy=character-item]')      
+      cy.get('[data-cy=character-item]') 
+      .first()
+      .find('[data-cy=view-button]')     
       .click()
     })
   })

@@ -1,18 +1,16 @@
 import React, { Component } from "react";
-import { Modal, Image, Header, Button } from "semantic-ui-react";
+import { Modal, Header, Button } from "semantic-ui-react";
 import axios from "axios";
 
-class EmployeeModal extends Component {
+class CharacterModal extends Component {
   state = {
     open: false,
-    employee: {},
+    character: {},
   };
 
-  getEmployee = async () => {
-    let employeeData = await axios.get(
-      `https://reqres.in/api/users/${this.props.id}`
-    );
-    this.setState({ employee: employeeData.data.data });
+  getCharacter = async () => {
+    let characterData = await axios.get(this.props.url);
+    this.setState({ character: characterData.data });
   };
 
   render() {
@@ -24,7 +22,7 @@ class EmployeeModal extends Component {
         trigger={
           <Button
             onClick={() => {
-              this.getEmployee();
+              this.getCharacter();
             }}
             size="small"
             positive
@@ -35,17 +33,10 @@ class EmployeeModal extends Component {
         }
       >
         <Modal.Content image data-cy="modal-container">
-          <Image
-            data-cy="image"
-            size="small"
-            src={this.state.employee.avatar}
-            wrapped
-          />
           <Modal.Description>
-            <Header data-cy="name">
-              {this.state.employee.first_name} {this.state.employee.last_name}
-            </Header>
-            <p data-cy="email">Email: {this.state.employee.email}</p>
+            <Header data-cy="name">{this.state.character.name}</Header>
+            <p data-cy="height">Height: {this.state.character.height}</p>
+            <p data-cy="mass">Mass: {this.state.character.mass}</p>
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
@@ -57,4 +48,4 @@ class EmployeeModal extends Component {
   }
 }
 
-export default EmployeeModal;
+export default CharacterModal;
